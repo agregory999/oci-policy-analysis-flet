@@ -22,8 +22,10 @@ jobs:
       - name: Build Docker image
         run: |
           IMAGE=${{ vars.OCI_REGION }}/${{ vars.OCI_NAMESPACE }}/${{ vars.OCI_REPO }}:${GITHUB_REF_NAME}
-
-          docker build -t $IMAGE .
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            -t $IMAGE \
+            --push .
           echo "Built $IMAGE"
 
       - name: Push Docker image
