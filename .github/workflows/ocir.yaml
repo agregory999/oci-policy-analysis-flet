@@ -17,15 +17,17 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Log in to OCIR
-        run: echo "${{ secrets.OCI_AUTH_TOKEN }}" | docker login iad.ocir.io -u 'idxhxzdpc23m/${{ secrets.OCI_USERNAME }}' --password-stdin
+        run: echo "${{ secrets.OCI_AUTH_TOKEN }}" | docker login ${{ vars.OCI_REGION }} -u '${{ secrets.OCI_USERNAME }}' --password-stdin
 
       - name: Build Docker image
         run: |
-          IMAGE=iad.ocir.io/idxhxzdpc23m/pyhton-flet-app:${GITHUB_REF_NAME}
+          IMAGE=${{ vars.OCI_REGION }}/${{ vars.OCI_NAMESPACE }}/${{ vars.OCI_REPO }}:${GITHUB_REF_NAME}
+
           docker build -t $IMAGE .
           echo "Built $IMAGE"
 
       - name: Push Docker image
         run: |
-          IMAGE=iad.ocir.io/idxhxzdpc23m/pyhton-flet-app:${GITHUB_REF_NAME}
+          IMAGE=IMAGE=${{ vars.OCI_REGION }}/${{ vars.OCI_NAMESPACE }}/${{ vars.OCI_REPO }}:${GITHUB_REF_NAME}
+
           docker push $IMAGE
