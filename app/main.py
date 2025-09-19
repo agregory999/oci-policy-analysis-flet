@@ -416,4 +416,6 @@ def main(page: ft.Page):
     logger.info("App started and initial page displayed.")
 
 
-ft.app(target=main, view=ft.AppView.WEB_BROWSER)
+# ft.app(target=main, view=ft.AppView.WEB_BROWSER)
+# Listen on all ports (will be behind LB)
+ft.app(target=main, view=ft.AppView.WEB_BROWSER, host="0.0.0.0", port=8080)
