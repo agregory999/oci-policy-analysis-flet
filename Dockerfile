@@ -1,22 +1,23 @@
+# Use official multi-arch Python slim image
 FROM python:3.11-slim
 
-# Install system deps
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+# Install system deps (e.g., git for runtime pull if needed)
+RUN apt-get update && apt-get install -y --no-install-recommends git \
+    && rm -rf /var/lib/apt/lists/*
 
-# Create working directory
+# Set workdir
 WORKDIR /app
 
-# Copy requirements first (for Docker caching)
+# Install Python deps separately (cacheable)
 COPY requirements.txt .
-
-# Install Python deps
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code
+# Copy application code (fast-changing layer)
 COPY . .
 
-# Expose app port (match what you set in main.py)
+# Expose app port (use ENV so it's configurable)
+ENV APP_PORT=8080
 EXPOSE 8080
 
-# Start the app
+# Start app
 CMD ["python", "app/main.py"]
