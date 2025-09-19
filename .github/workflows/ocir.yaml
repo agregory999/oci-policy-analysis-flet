@@ -28,6 +28,6 @@ jobs:
 
       - name: Push Docker image
         run: |
-          IMAGE=IMAGE=${{ vars.OCI_REGION }}/${{ vars.OCI_NAMESPACE }}/${{ vars.OCI_REPO }}:${GITHUB_REF_NAME}
+          IMAGE=${{ vars.OCI_REGION }}/${{ vars.OCI_NAMESPACE }}/${{ vars.OCI_REPO }}:${GITHUB_REF_NAME}
 
           docker push $IMAGE
