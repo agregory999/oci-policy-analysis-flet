@@ -5,19 +5,22 @@ FROM python:3.11-slim
 RUN apt-get update && apt-get install -y --no-install-recommends git \
     && rm -rf /var/lib/apt/lists/*
 
-# Set workdir
 WORKDIR /app
 
-# Install Python deps separately (cacheable)
+# Install dependencies first
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code (fast-changing layer)
-COPY . .
+# Copy only app folder
+COPY app ./app
+COPY docs ./docs
+COPY pyproject.toml .
+COPY README.md .
+COPY LICENSE .
 
-# Expose app port (use ENV so it's configurable)
+# Expose port
 ENV APP_PORT=8080
 EXPOSE 8080
 
-# Start app
+# Start the app
 CMD ["python", "app/main.py"]
