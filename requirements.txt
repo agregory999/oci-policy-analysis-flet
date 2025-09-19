@@ -1,0 +1,11 @@
+# Core dependencies
+flet>=0.22.0
+oci>=2.129.2
+
+# Docs
+sphinx
+furo
+
+# Dev tools
+ruff
+pre-commit

@@ -1,0 +1,16 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.5
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: sphinx-build
+        name: sphinx-build
+        entry: sphinx-build
+        args: ["-b", "html", "docs", "docs/_build/html", "-W", "--keep-going"]
+        language: system
+        pass_filenames: false

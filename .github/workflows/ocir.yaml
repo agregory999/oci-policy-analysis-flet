@@ -1,0 +1,31 @@
+name: Build and Push to OCIR
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to OCIR
+        run: echo "${{ secrets.OCI_AUTH_TOKEN }}" | docker login iad.ocir.io -u 'idxhxzdpc23m/${{ secrets.OCI_USERNAME }}' --password-stdin
+
+      - name: Build Docker image
+        run: |
+          IMAGE=iad.ocir.io/idxhxzdpc23m/pyhton-flet-app:${GITHUB_REF_NAME}
+          docker build -t $IMAGE .
+          echo "Built $IMAGE"
+
+      - name: Push Docker image
+        run: |
+          IMAGE=iad.ocir.io/idxhxzdpc23m/pyhton-flet-app:${GITHUB_REF_NAME}
+          docker push $IMAGE
