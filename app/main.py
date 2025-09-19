@@ -1,12 +1,14 @@
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-import flet as ft
-import logging
-from logging.handlers import RotatingFileHandler
-import uuid
-import os
 import json
+import logging
+import os
+import sys
+import uuid
+from logging.handlers import RotatingFileHandler
+
+import flet as ft
 
 
 # ---------- Custom UI Log Handler ----------
@@ -83,8 +85,8 @@ def main(page: ft.Page):
 
     # ---------- SECRET TOKEN ----------
     session_token = str(uuid.uuid4())
-    print(f"🔑 Session token (share with user): {session_token}")
-
+    print(">>> Flet app starting up...", flush=True)
+    print(f"🔑 Session token (share with user): {session_token}", flush=True)
     page.session.set("authenticated", False)
 
     # ---------- Logger Setup ----------
