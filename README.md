@@ -1,6 +1,7 @@
 # NavRail OCI Management App
 
-[![Docs](https://github.com/<your-username>/<your-repo>/actions/workflows/docs.yml/badge.svg)](https://<your-username>.github.io/<your-repo>/)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://agregory999.github.io/oci-policy-analysis-flet/)
+
 
 A **Flet-based desktop and web app** for exploring Oracle Cloud Infrastructure (OCI) IAM policies, users, groups, and AI-powered insights.  
 
