@@ -64,6 +64,7 @@ jobs:
 
       - name: Restart Container Instance
         run: |
+          oci setup repair-file-permissions --file /home/runner/.oci/config 
           oci container-instances container-instance stop \
             --container-instance-id ${{ secrets.OCI_CONTAINER_ID }}
           echo "Waiting 20s before restart..."
