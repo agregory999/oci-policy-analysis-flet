@@ -1,26 +1,30 @@
-# Multi-arch base image
-FROM python:3.11-slim AS base
+# Base image (multi-arch, works on ARM A1)
+FROM python:3.11-slim-bullseye
 
-# Install system deps (minimal)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# Force unbuffered logs so you see output immediately
+ENV PYTHONUNBUFFERED=1 \
+    APP_PORT=8080
 
 WORKDIR /app
 
-ENV PYTHONUNBUFFERED=1
+# Install uv (fast dependency installer)
+RUN pip install --no-cache-dir uv
 
-# --- Dependency layer (cached if requirements.txt unchanged)
+# Copy dependencies definition first (cache-friendly)
 COPY requirements.txt .
-RUN pip install --no-cache-dir --no-warn-script-location --disable-pip-version-check -r requirements.txt
 
-# --- Application layer
+# Install dependencies using uv (much faster than pip)
+RUN uv pip install --system -r requirements.txt
+
+# If you want to use pip instead, comment the uv line above and uncomment this:
+# RUN pip install --no-cache-dir --no-warn-script-location --disable-pip-version-check -r requirements.txt
+
+# Copy application source
 COPY app ./app
-COPY docs ./docs
 COPY pyproject.toml README.md LICENSE ./
 
-# Expose port
-ENV APP_PORT=8080
+# Expose app port
 EXPOSE 8080
 
+# Start Flet app
 CMD ["python", "app/main.py"]

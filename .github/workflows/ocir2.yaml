@@ -13,7 +13,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Set up QEMU (multi-arch)
+      - name: Set up QEMU (multi-arch, only needed if you uncomment amd64)
         uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
@@ -22,12 +22,17 @@ jobs:
       - name: Log in to OCIR
         run: echo "${{ secrets.OCI_AUTH_TOKEN }}" | docker login ${{ vars.OCI_REGION_CODE }} -u "${{ vars.OCI_NAMESPACE }}/${{ secrets.OCI_USERNAME }}" --password-stdin
 
-      - name: Build and Push (multi-arch + cache)
+      - name: Build and Push (ARM-only, with cache)
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64
+          # Build for ARM only (works on OCI A1 Container Instances)
+          platforms: linux/arm64
+          # If you ever need AMD64 instead, comment above and uncomment:
+          # platforms: linux/amd64
+          # Or for multi-arch (slower build):
+          # platforms: linux/amd64,linux/arm64
           tags: |
             ${{ vars.OCI_REGION_CODE }}/${{ vars.OCI_NAMESPACE }}/${{ vars.OCI_REPO }}:${{ github.ref_name }}
             ${{ vars.OCI_REGION_CODE }}/${{ vars.OCI_NAMESPACE }}/${{ vars.OCI_REPO }}:latest
@@ -59,8 +64,8 @@ jobs:
 
       - name: Restart Container Instance
         run: |
-          oci container-instances container-instance stop \
-            --container-instance-id ${{ secrets.OCI_CONTAINER_ID }} \
+          oci container-instances container-instance action-terminate \
+            --container-instance-id ${{ secrets.OCI_CONTAINER_ID }}
           echo "Waiting 20s before restart..."
           sleep 20
           oci container-instances container-instance action-start \
