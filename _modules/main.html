@@ -1,0 +1,743 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
+        <title>main - OCI Policy Analysis Flet 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">OCI Policy Analysis Flet 0.1.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">OCI Policy Analysis Flet 0.1.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules.html">app</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of app</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_repository.html">data_repository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../main.html">main module</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for main</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">logging.handlers</span><span class="w"> </span><span class="kn">import</span> <span class="n">RotatingFileHandler</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+
+
+<span class="c1"># ---------- Custom UI Log Handler ----------</span>
+<div class="viewcode-block" id="FletLogHandler">
+<a class="viewcode-back" href="../main.html#main.FletLogHandler">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FletLogHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Handler</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom logging handler that writes log records into a Flet ListView.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">console_output</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">ListView</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the log handler.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            console_output (ft.ListView): ListView control to display log messages.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">console_output</span> <span class="o">=</span> <span class="n">console_output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="n">page</span>
+
+<div class="viewcode-block" id="FletLogHandler.emit">
+<a class="viewcode-back" href="../main.html#main.FletLogHandler.emit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Append a log record to the console output.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            record (logging.LogRecord): The log record to be emitted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">console_output</span><span class="o">.</span><span class="n">page</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">console_output</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Colors</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">console_output</span><span class="o">.</span><span class="n">scroll_to</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[UI Log Fallback] </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">handleError</span><span class="p">(</span><span class="n">record</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="configure_logger">
+<a class="viewcode-back" href="../main.html#main.configure_logger">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">configure_logger</span><span class="p">(</span><span class="n">console_output</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">ListView</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configure the root logger with file and Flet UI handlers.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        console_output (ft.ListView): ListView control for displaying log messages.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        logging.Logger: The configured logger instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log_dir</span> <span class="o">=</span> <span class="s2">&quot;./logs&quot;</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">log_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">log_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">log_dir</span><span class="p">,</span> <span class="s2">&quot;app.log&quot;</span><span class="p">)</span>
+
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;flet_app&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+    <span class="c1"># Formatter styles</span>
+    <span class="n">ui_fmt</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%(asctime)s</span><span class="s2">] </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">file_fmt</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> [</span><span class="si">%(levelname)s</span><span class="s2">] </span><span class="si">%(name)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># UI handler</span>
+    <span class="n">ui_handler</span> <span class="o">=</span> <span class="n">FletLogHandler</span><span class="p">(</span><span class="n">console_output</span><span class="p">,</span> <span class="n">page</span><span class="p">)</span>
+    <span class="n">ui_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">ui_fmt</span><span class="p">)</span>
+
+    <span class="c1"># Rotating file handler</span>
+    <span class="n">file_handler</span> <span class="o">=</span> <span class="n">RotatingFileHandler</span><span class="p">(</span>
+        <span class="n">log_file</span><span class="p">,</span> <span class="n">maxBytes</span><span class="o">=</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">backupCount</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+    <span class="p">)</span>
+    <span class="n">file_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">file_fmt</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">ui_handler</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
+
+        <span class="c1"># Also attach to OCI SDK loggers</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;oci&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;oci.identity&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;oci.identity_domains&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;oci.generative_ai_inference&quot;</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="n">sdk_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">sdk_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+            <span class="n">sdk_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">ui_handler</span><span class="p">)</span>
+            <span class="n">sdk_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Logger initialized with UI and rotating file handlers.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">logger</span></div>
+
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../main.html#main.main">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main entrypoint for the Flet dashboard app.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        page (ft.Page): The root Flet Page object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;NavRail App with Login + Console &amp; Detail Fly-in + File Logging&quot;</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">theme_mode</span> <span class="o">=</span> <span class="s2">&quot;light&quot;</span>
+
+    <span class="c1"># ---------- SECRET TOKEN ----------</span>
+    <span class="n">session_token</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt; Flet app starting up...&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔑 Session token (share with user): </span><span class="si">{</span><span class="n">session_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;authenticated&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># ---------- Logger Setup ----------</span>
+    <span class="n">console_output</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ListView</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">auto_scroll</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">configure_logger</span><span class="p">(</span><span class="n">console_output</span><span class="p">,</span> <span class="n">page</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_console</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">console_output</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Console output cleared.&quot;</span><span class="p">)</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">clear_btn</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="s2">&quot;Clear Console&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">clear_console</span><span class="p">)</span>
+
+    <span class="n">flyin_console</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+        <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Console Log&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Colors</span><span class="o">.</span><span class="n">AMBER</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                        <span class="n">clear_btn</span><span class="p">,</span>
+                    <span class="p">]</span>
+                <span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Divider</span><span class="p">(),</span>
+                <span class="n">console_output</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">),</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Colors</span><span class="o">.</span><span class="n">BLACK</span><span class="p">,</span>
+        <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># ---------- Global App State ----------</span>
+    <span class="n">app_state</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;settings_complete&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;selected_detail&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># ---------- Detail Fly-in ----------</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">close_detail</span><span class="p">():</span>
+        <span class="n">detail_flyin</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">detail_flyin</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+        <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Details&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;headlineSmall&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                        <span class="n">ft</span><span class="o">.</span><span class="n">IconButton</span><span class="p">(</span>
+                            <span class="n">icon</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Icons</span><span class="o">.</span><span class="n">CLOSE</span><span class="p">,</span>
+                            <span class="n">tooltip</span><span class="o">=</span><span class="s2">&quot;Close&quot;</span><span class="p">,</span>
+                            <span class="n">on_click</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">close_detail</span><span class="p">(),</span>
+                        <span class="p">),</span>
+                    <span class="p">]</span>
+                <span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Select a row...&quot;</span><span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">scroll</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">ScrollMode</span><span class="o">.</span><span class="n">AUTO</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Colors</span><span class="o">.</span><span class="n">GREY_200</span><span class="p">,</span>
+        <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">padding</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_detail</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Show details of a selected record in the right-side panel.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            item (dict): The record to display as JSON.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_state</span><span class="p">[</span><span class="s2">&quot;selected_detail&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="n">detail_flyin</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Details&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;headlineSmall&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                        <span class="n">ft</span><span class="o">.</span><span class="n">IconButton</span><span class="p">(</span>
+                            <span class="n">icon</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Icons</span><span class="o">.</span><span class="n">CLOSE</span><span class="p">,</span>
+                            <span class="n">tooltip</span><span class="o">=</span><span class="s2">&quot;Close&quot;</span><span class="p">,</span>
+                            <span class="n">on_click</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">close_detail</span><span class="p">(),</span>
+                        <span class="p">),</span>
+                    <span class="p">]</span>
+                <span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">selectable</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">scroll</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">ScrollMode</span><span class="o">.</span><span class="n">AUTO</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">detail_flyin</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">main_area</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="c1"># ---------- Fake Data ----------</span>
+    <span class="n">sample_policies</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;p</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Policy</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;statements&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;ALLOW group G</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> to read resource</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="n">sample_users</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;u</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;User</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Group</span><span class="si">{</span><span class="n">i</span><span class="o">%</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="c1"># ---------- Navigation Buttons (global refs) ----------</span>
+    <span class="n">goto_policies_btn</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span>
+        <span class="s2">&quot;Go to Policies&quot;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">show_page</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">goto_users_btn</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span>
+        <span class="s2">&quot;Go to Users&quot;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">show_page</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># ---------- Pages ----------</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">settings_view</span><span class="p">():</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
+            <span class="s2">&quot;✅ Settings complete!&quot;</span>
+            <span class="k">if</span> <span class="n">app_state</span><span class="p">[</span><span class="s2">&quot;settings_complete&quot;</span><span class="p">]</span>
+            <span class="k">else</span> <span class="s2">&quot;Complete settings to unlock other pages&quot;</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span> <span class="k">if</span> <span class="n">app_state</span><span class="p">[</span><span class="s2">&quot;settings_complete&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">toggle_console</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Show Console Log&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">flyin_console</span><span class="o">.</span><span class="n">visible</span>
+        <span class="p">)</span>
+
+        <span class="n">log_level_dropdown</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Log Level&quot;</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">dropdown</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">dropdown</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;INFO&quot;</span><span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">dropdown</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;WARNING&quot;</span><span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">dropdown</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;ERROR&quot;</span><span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">value</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="n">logger</span><span class="o">.</span><span class="n">level</span><span class="p">),</span>
+            <span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">complete_settings</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+            <span class="n">app_state</span><span class="p">[</span><span class="s2">&quot;settings_complete&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">status</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;✅ Settings complete!&quot;</span>
+            <span class="n">status</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span>
+            <span class="n">goto_policies_btn</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">goto_users_btn</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Settings marked complete.&quot;</span><span class="p">)</span>
+            <span class="n">main_area</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">toggle_console_log</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+            <span class="n">flyin_console</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Console log </span><span class="si">{</span><span class="s1">&#39;enabled&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;disabled&#39;</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">change_log_level</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Change the logging level.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                e (ft.ControlEvent): Dropdown change event.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">new_level</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">logging</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">new_level</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="s2">&quot;oci&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;oci.identity&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;oci.identity_domains&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;oci.generative_ai_inference&quot;</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">new_level</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Log level changed to </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">toggle_console</span><span class="o">.</span><span class="n">on_change</span> <span class="o">=</span> <span class="n">toggle_console_log</span>
+        <span class="n">log_level_dropdown</span><span class="o">.</span><span class="n">on_change</span> <span class="o">=</span> <span class="n">change_log_level</span>
+
+        <span class="k">return</span> <span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Settings Page&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;headlineSmall&quot;</span><span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Tenancy Profile&quot;</span><span class="p">,</span>
+                    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">dropdown</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;Profile1&quot;</span><span class="p">)],</span>
+                <span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">([</span><span class="n">toggle_console</span><span class="p">,</span> <span class="n">log_level_dropdown</span><span class="p">]),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="s2">&quot;Save Settings&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">complete_settings</span><span class="p">),</span>
+                <span class="n">status</span><span class="p">,</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">([</span><span class="n">goto_policies_btn</span><span class="p">,</span> <span class="n">goto_users_btn</span><span class="p">]),</span>
+            <span class="p">],</span>
+            <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">policies_view</span><span class="p">():</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sample_policies</span><span class="p">:</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">DataRow</span><span class="p">(</span>
+                <span class="n">cells</span><span class="o">=</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">DataCell</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])),</span> <span class="n">ft</span><span class="o">.</span><span class="n">DataCell</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))],</span>
+                <span class="n">on_select_changed</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="n">p</span><span class="p">:</span> <span class="n">show_detail</span><span class="p">(</span><span class="n">item</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">ft</span><span class="o">.</span><span class="n">DataTable</span><span class="p">(</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+                            <span class="n">ft</span><span class="o">.</span><span class="n">DataColumn</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">)),</span>
+                            <span class="n">ft</span><span class="o">.</span><span class="n">DataColumn</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">)),</span>
+                        <span class="p">],</span>
+                        <span class="n">rows</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">],</span>
+                <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">scroll</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">ScrollMode</span><span class="o">.</span><span class="n">AUTO</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">users_view</span><span class="p">():</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">sample_users</span><span class="p">:</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">DataRow</span><span class="p">(</span>
+                <span class="n">cells</span><span class="o">=</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">DataCell</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])),</span> <span class="n">ft</span><span class="o">.</span><span class="n">DataCell</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))],</span>
+                <span class="n">on_select_changed</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="n">u</span><span class="p">:</span> <span class="n">show_detail</span><span class="p">(</span><span class="n">item</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">DataTable</span><span class="p">(</span>
+                <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">DataColumn</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">)),</span> <span class="n">ft</span><span class="o">.</span><span class="n">DataColumn</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">))],</span>
+                <span class="n">rows</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">scroll</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">ScrollMode</span><span class="o">.</span><span class="n">AUTO</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># ---------- Content Routing ----------</span>
+    <span class="n">content_area</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">locked_message</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;⚠️ Please complete Settings first&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">),</span>
+            <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">alignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_page</span><span class="p">(</span><span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Switch the content area to the selected page.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            index (int): Index of the page to show (0=Settings, 1=Policies, 2=Users).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">navrail</span><span class="o">.</span><span class="n">selected_index</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">content_area</span><span class="o">.</span><span class="n">controls</span> <span class="o">=</span> <span class="p">[</span><span class="n">settings_view</span><span class="p">()]</span>
+        <span class="k">elif</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">content_area</span><span class="o">.</span><span class="n">controls</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="p">[</span><span class="n">policies_view</span><span class="p">()]</span>
+                <span class="k">if</span> <span class="n">app_state</span><span class="p">[</span><span class="s2">&quot;settings_complete&quot;</span><span class="p">]</span>
+                <span class="k">else</span> <span class="p">[</span><span class="n">locked_message</span><span class="p">()]</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">content_area</span><span class="o">.</span><span class="n">controls</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="p">[</span><span class="n">users_view</span><span class="p">()]</span> <span class="k">if</span> <span class="n">app_state</span><span class="p">[</span><span class="s2">&quot;settings_complete&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="p">[</span><span class="n">locked_message</span><span class="p">()]</span>
+            <span class="p">)</span>
+        <span class="n">main_area</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="c1"># ---------- NavRail ----------</span>
+    <span class="n">navrail</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">NavigationRail</span><span class="p">(</span>
+        <span class="n">selected_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">label_type</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">NavigationRailLabelType</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span>
+        <span class="n">destinations</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">NavigationRailDestination</span><span class="p">(</span><span class="n">icon</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Icons</span><span class="o">.</span><span class="n">SETTINGS</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Settings&quot;</span><span class="p">),</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">NavigationRailDestination</span><span class="p">(</span><span class="n">icon</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Icons</span><span class="o">.</span><span class="n">POLICY</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Policies&quot;</span><span class="p">),</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">NavigationRailDestination</span><span class="p">(</span><span class="n">icon</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Icons</span><span class="o">.</span><span class="n">PEOPLE</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Users&quot;</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">on_change</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">show_page</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">selected_index</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="c1"># ---------- Layout (detail right, console bottom) ----------</span>
+    <span class="n">main_area</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">navrail</span><span class="p">,</span> <span class="n">ft</span><span class="o">.</span><span class="n">VerticalDivider</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">content_area</span><span class="p">,</span> <span class="n">detail_flyin</span><span class="p">],</span>
+        <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">main_area</span><span class="p">,</span>  <span class="c1"># main area with nav + content + detail</span>
+            <span class="n">flyin_console</span><span class="p">,</span>  <span class="c1"># console at bottom</span>
+        <span class="p">],</span>
+        <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># ---------- Login Overlay ----------</span>
+    <span class="n">overlay_bg</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Colors</span><span class="o">.</span><span class="n">with_opacity</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">ft</span><span class="o">.</span><span class="n">Colors</span><span class="o">.</span><span class="n">BLACK</span><span class="p">),</span>
+        <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">token_field</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Enter session token&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+    <span class="n">login_message</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Please enter the token from server logs&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">do_login</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">token_field</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="n">session_token</span><span class="p">:</span>
+            <span class="n">page</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;authenticated&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="n">overlay_bg</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">login_box</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;User logged in successfully.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">login_message</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;❌ Invalid token, try again&quot;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed login attempt.&quot;</span><span class="p">)</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">login_box</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+        <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Login Required&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;headlineMedium&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">),</span>
+                <span class="n">token_field</span><span class="p">,</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="s2">&quot;Login&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">do_login</span><span class="p">),</span>
+                <span class="n">login_message</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">horizontal_alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">CrossAxisAlignment</span><span class="o">.</span><span class="n">CENTER</span><span class="p">,</span>
+            <span class="n">spacing</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Colors</span><span class="o">.</span><span class="n">with_opacity</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">ft</span><span class="o">.</span><span class="n">Colors</span><span class="o">.</span><span class="n">BLUE_GREY_900</span><span class="p">),</span>
+        <span class="n">border_radius</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">padding</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">alignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+        <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># ---------- Add to Page ----------</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Stack</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">layout</span><span class="p">,</span>
+                <span class="n">overlay_bg</span><span class="p">,</span>
+                <span class="n">login_box</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">show_page</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;App started and initial page displayed.&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">AppView</span><span class="o">.</span><span class="n">WEB_BROWSER</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>
