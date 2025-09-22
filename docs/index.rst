@@ -1,15 +1,10 @@
-Welcome to OCI Policy Analysis App
-==================================
+Welcome to OCI Policy Analysis Flet documentation!
+====================================================
+
+Contents:
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: API Reference
 
    modules
-
-API Reference
-=============
-
-.. automodule:: main
-   :members:
-

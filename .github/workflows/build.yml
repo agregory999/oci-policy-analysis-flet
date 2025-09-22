@@ -67,7 +67,7 @@ jobs:
           oci setup repair-file-permissions --file /home/runner/.oci/config 
           oci container-instances container-instance stop \
             --container-instance-id ${{ secrets.OCI_CONTAINER_ID }}
-          echo "Waiting 20s before restart..."
-          sleep 20
+          echo "Waiting 30s before restart..."
+          sleep 30
           oci container-instances container-instance start \
             --container-instance-id ${{ secrets.OCI_CONTAINER_ID }}
