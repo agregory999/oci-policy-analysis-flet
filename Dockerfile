@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
+ENV PYTHONUNBUFFERED=1
+
 # --- Dependency layer (cached if requirements.txt unchanged)
 COPY requirements.txt .
 RUN pip install --no-cache-dir --no-warn-script-location --disable-pip-version-check -r requirements.txt

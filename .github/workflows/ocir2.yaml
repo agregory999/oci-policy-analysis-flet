@@ -61,7 +61,6 @@ jobs:
         run: |
           oci container-instances container-instance stop \
             --container-instance-id ${{ secrets.OCI_CONTAINER_ID }} \
-            --force
           echo "Waiting 20s before restart..."
           sleep 20
           oci container-instances container-instance action-start \
