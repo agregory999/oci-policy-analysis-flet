@@ -22,10 +22,11 @@ jobs:
       - name: Install uv
         run: pip install uv
 
-      - name: Install docs dependencies
+      - name: Install project + docs dependencies
         run: |
-          pip install uv
+          # Install app dependencies (flet, oci, etc.)
           uv pip install --system -r requirements.txt
+          # Install docs dependencies
           if [ -f docs/requirements.txt ]; then
             uv pip install --system -r docs/requirements.txt
           else

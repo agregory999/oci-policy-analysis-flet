@@ -1,14 +1,13 @@
-import warnings
-warnings.filterwarnings("ignore", category=DeprecationWarning)
-
 import json
 import logging
 import os
-import sys
 import uuid
+import warnings
 from logging.handlers import RotatingFileHandler
 
 import flet as ft
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 # ---------- Custom UI Log Handler ----------
@@ -16,12 +15,21 @@ class FletLogHandler(logging.Handler):
     """Custom logging handler that writes log records into a Flet ListView."""
 
     def __init__(self, console_output: ft.ListView, page: ft.Page):
+        """Initialize the log handler.
+
+        Args:
+            console_output (ft.ListView): ListView control to display log messages.
+        """
         super().__init__()
         self.console_output = console_output
         self.page = page
 
     def emit(self, record):
-        """Append formatted log record to the ListView if mounted, else skip."""
+        """Append a log record to the console output.
+
+        Args:
+            record (logging.LogRecord): The log record to be emitted.
+        """
         msg = self.format(record)
         try:
             if self.console_output.page:
@@ -36,7 +44,14 @@ class FletLogHandler(logging.Handler):
 
 
 def configure_logger(console_output: ft.ListView, page: ft.Page) -> logging.Logger:
-    """Configure root logger with file + Flet handlers, including OCI SDK loggers."""
+    """Configure the root logger with file and Flet UI handlers.
+
+    Args:
+        console_output (ft.ListView): ListView control for displaying log messages.
+
+    Returns:
+        logging.Logger: The configured logger instance.
+    """
     log_dir = "./logs"
     os.makedirs(log_dir, exist_ok=True)
     log_file = os.path.join(log_dir, "app.log")
@@ -79,7 +94,11 @@ def configure_logger(console_output: ft.ListView, page: ft.Page) -> logging.Logg
 
 
 def main(page: ft.Page):
-    """Main entrypoint for the Flet application."""
+    """Main entrypoint for the Flet dashboard app.
+
+    Args:
+        page (ft.Page): The root Flet Page object.
+    """
     page.title = "NavRail App with Login + Console & Detail Fly-in + File Logging"
     page.theme_mode = "light"
 
@@ -153,7 +172,11 @@ def main(page: ft.Page):
     )
 
     def show_detail(item: dict):
-        """Show JSON detail in fly-in."""
+        """Show details of a selected record in the right-side panel.
+
+        Args:
+            item (dict): The record to display as JSON.
+        """
         app_state["selected_detail"] = item
         detail_flyin.content = ft.Column(
             [
@@ -233,12 +256,15 @@ def main(page: ft.Page):
 
         def toggle_console_log(e):
             flyin_console.visible = e.control.value
-            logger.info(
-                f"Console log {'enabled' if e.control.value else 'disabled'}."
-            )
+            logger.info(f"Console log {'enabled' if e.control.value else 'disabled'}.")
             page.update()
 
         def change_log_level(e):
+            """Change the logging level.
+
+            Args:
+                e (ft.ControlEvent): Dropdown change event.
+            """
             new_level = getattr(logging, e.control.value)
             logger.setLevel(new_level)
             for name in [
@@ -281,7 +307,10 @@ def main(page: ft.Page):
             content=ft.Column(
                 [
                     ft.DataTable(
-                        columns=[ft.DataColumn(ft.Text("ID")), ft.DataColumn(ft.Text("Name"))],
+                        columns=[
+                            ft.DataColumn(ft.Text("ID")),
+                            ft.DataColumn(ft.Text("Name")),
+                        ],
                         rows=rows,
                     )
                 ],
@@ -290,7 +319,6 @@ def main(page: ft.Page):
             ),
             expand=True,
         )
-
 
     def users_view():
         rows = []
@@ -320,6 +348,11 @@ def main(page: ft.Page):
         )
 
     def show_page(index: int):
+        """Switch the content area to the selected page.
+
+        Args:
+            index (int): Index of the page to show (0=Settings, 1=Policies, 2=Users).
+        """
         navrail.selected_index = index
         if index == 0:
             content_area.controls = [settings_view()]
@@ -331,9 +364,7 @@ def main(page: ft.Page):
             )
         elif index == 2:
             content_area.controls = (
-                [users_view()]
-                if app_state["settings_complete"]
-                else [locked_message()]
+                [users_view()] if app_state["settings_complete"] else [locked_message()]
             )
         main_area.update()
 
@@ -357,7 +388,7 @@ def main(page: ft.Page):
 
     layout = ft.Column(
         [
-            main_area,   # main area with nav + content + detail
+            main_area,  # main area with nav + content + detail
             flyin_console,  # console at bottom
         ],
         expand=True,
@@ -418,6 +449,5 @@ def main(page: ft.Page):
     logger.info("App started and initial page displayed.")
 
 
-# ft.app(target=main, view=ft.AppView.WEB_BROWSER)
-# Listen on all ports (will be behind LB)
-ft.app(target=main, view=ft.AppView.WEB_BROWSER, host="0.0.0.0", port=8080)
+if __name__ == "__main__":
+    ft.app(target=main, view=ft.AppView.WEB_BROWSER, host="0.0.0.0", port=8080)

@@ -1,5 +1,5 @@
-NavRail OCI Management App
-==========================
+Welcome to OCI Policy Analysis App
+==================================
 
 .. toctree::
    :maxdepth: 2
@@ -10,7 +10,6 @@ NavRail OCI Management App
 API Reference
 =============
 
-.. automodule:: app.main
+.. automodule:: main
    :members:
-   :undoc-members:
-   :show-inheritance:
+
